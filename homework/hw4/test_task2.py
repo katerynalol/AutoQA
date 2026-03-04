@@ -20,9 +20,15 @@ def test_image_upload(driver):
     wait = WebDriverWait(driver, 20)
     wait.until(EC.visibility_of_element_located((By.ID, "landscape")))
 
-    images = driver.find_elements(By.TAG_NAME, "img")
-    image_3 = images[3]
+    image_container = driver.find_element(By.ID, "image-container")
+    images = image_container.find_elements(By.TAG_NAME, "img")
+    image_3 = images[2]
 
     alt_value = image_3.get_attribute("alt")
+
+    # images = driver.find_elements(By.TAG_NAME, "img")
+    # image_3 = images[3]
+    #
+    # alt_value = image_3.get_attribute("alt")
 
     assert alt_value == "award"
