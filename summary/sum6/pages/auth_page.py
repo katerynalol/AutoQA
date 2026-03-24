@@ -1,14 +1,14 @@
 from selenium.webdriver.common.by import By
 from summary.sum6.pages.base_page import BasePage
 
-class ContactPage(BasePage):
+class AuthPage(BasePage):
     # Locators
-    NAME_FIELD = (By.ID, "name")
-    LOCATION_INFO = (By.CSS_SELECTOR, ".card-body h4 + p")
+    USER_NAME_FIELD = (By.ID, "username")
+    PASSWORD_FIELD = (By.ID, "password")
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.url = "https://automationintesting.online/#contact"
+        self.url = "https://automationintesting.online/admin"
 
     def open(self):
         self.driver.get(self.url)

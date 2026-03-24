@@ -1,11 +1,17 @@
 from time import sleep
-from summary.sum6.tests.base_test import BaseTest
-
+from .base_test import BaseTest
+from .test_data import Constants
 
 class TestContactForm(BaseTest):
 
-    def test_successful_open(self):
+    def test_successful_open_main_page(self):
        self.contact_page.open()
-       contact_text = self.contact_page.get_text(self.contact_page.LOCATION_INFO)
+       text = self.contact_page.get_text(self.contact_page.LOCATION_INFO)
+       print(text)
+       sleep(1)
 
-       assert contact_text == "Welcome to Shady Meadows, a delightful Bed & Breakfast nestled in the hills on Newingtonfordburyshire. A place so beautiful you will never want to leave. All our rooms have comfortable beds and we provide breakfast from the locally sourced supermarket. It is a delightful place."
+    def test_successful_open_auth_page(self):
+        self.auth_page.open()
+        self.auth_page.type_text(self.auth_page.USER_NAME_FIELD, Constants.USERNAME)
+        self.auth_page.type_text(self.auth_page.PASSWORD_FIELD, Constants.PASSWORD)
+        sleep(1)

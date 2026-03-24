@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from summary.sum6.pages.contact_page import ContactPage
-
+from pages.contact_page import ContactPage
+from pages.auth_page import AuthPage
 
 @pytest.fixture(scope="function")
 def setup(request):
@@ -10,6 +10,6 @@ def setup(request):
 
     request.cls.driver = driver
     request.cls.contact_page = ContactPage(driver)
-
+    request.cls.auth_page = AuthPage(driver)
     yield
     driver.quit()
